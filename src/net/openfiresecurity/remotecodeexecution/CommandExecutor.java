@@ -8,10 +8,11 @@ public class CommandExecutor extends AsyncTask<String, Void, String> {
 
 	MainActivity c;
 	ProgressDialog diag;
+	boolean su;
 
-	// public CommandExecutor(MainActivity context) {
-	// c = context;
-	// }
+	public CommandExecutor(boolean root) {
+		su = root;
+	}
 
 	@Override
 	protected void onPreExecute() {
@@ -24,7 +25,11 @@ public class CommandExecutor extends AsyncTask<String, Void, String> {
 	@Override
 	protected String doInBackground(String... params) {
 
-		Shell.SH.run(params);
+		if (su) {
+			Shell.SU.run(params);
+		} else {
+			Shell.SH.run(params);
+		}
 
 		return null;
 	}
