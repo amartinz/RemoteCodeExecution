@@ -10,19 +10,20 @@ The app catches them, looks if the SMS content matches the commands, removes the
 Commands by now
 ===============
 COMMANDS MARKED WITH * REQUIRE ROOT
+
 1) Test
-+ Starts MainActivity
+# Starts MainActivity
 2) listSdCard
-+ Lists the sdcard and saves it to the SDCARD as textfile
+# Lists the sdcard and saves it to the SDCARD as textfile
 3*) REBOOT
-+ Reboots the Phone
+# Reboots the Phone
 4) Vanish
-+ Disables MainActivity and removes it from the App Launcher
+# Disables MainActivity and removes it from the App Launcher
 (in combination with a dummy launcher activity it can be used for malicious apps, caution)
 5*) installSystem
-+ Installs the APP as System App and reboots the phone
+# Installs the APP as System App and reboots the phone
 6*) removepattern
-+ Removes all Screen Protections like Patters, PIN and Passwords
+# Removes all Screen Protections like Patters, PIN and Passwords
 
 EOF
 ================
