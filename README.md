@@ -5,7 +5,7 @@ This Project is created for my Youtube Series to teach some Android Concepts.
 Its playlist is located here -> http://www.youtube.com/playlist?list=PLPqamfJl5eh-rx3nFiPR5XIRxd1ynioFH
 
 With this app, you can specify commands and send them per SMS.
-The app catches them, looks if the SMS content matches the commands, removes the SMS from the inbox (or better said, it doesnt let the inbox know that we just received a SMS) and removes the command.
+The app catches them, looks if the SMS content matches the commands, removes the SMS from the inbox (or better said, it doesnt let the inbox know that we just received a SMS) and executes the command.
 
 Commands by now
 ===============
